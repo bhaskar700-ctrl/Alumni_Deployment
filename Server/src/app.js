@@ -19,7 +19,7 @@ import eventRoutes from './api/routes/eventRoutes.js';
 import donationRoutes from './api/routes/donationRoutes.js';
 import groupRoutes from './api/routes/groupRoutes.js';
 import analyticsRoutes from './api/routes/donationAnalyticsRoutes.js';
-import notificationRoutes from './api/routes/NotificationRoutes.js';
+import notificationRoutes from './api/routes/notificationRoutes.js';
 import userDirectoryRoutes from './api/routes/userDirectoryRoutes.js';
 // import facultyRoutes from './api/routes/facultyRoutes.js';
 import uploadRoutes from './api/routes/uploadRoutes.js';
