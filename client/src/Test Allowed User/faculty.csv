@@ -1,0 +1,3 @@
+facultyId,name,email,department,title,phoneNumber,dateOfBirth,isRegistered
+F201,Bhaskar Sharma,bhaskar.sharma@example.com,Computer Science,Professor,1234567890,1965-02-10,true
+F202,Ramesh Baruah,ramesh.baruah@example.com,Electrical Engineering,Associate Professor,0987654321,1972-11-28,false

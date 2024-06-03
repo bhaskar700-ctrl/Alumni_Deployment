@@ -1,0 +1,2 @@
+alumniId,name,email,department,graduationYear,program,phoneNumber,address,dateOfBirth,nationality,gender,coursesCompleted,gpa,activities,isRegistered
+A1005,Arup Hazarika,aruphazarika@example.com,Information Technology,2017,B.Tech,3344556677,"654 Maple St, Dibrugarh, Assam",1993-07-30,Indian,male,"[{""courseCode"": ""IT101"", ""courseName"": ""Network Security"", ""grade"": ""A""}, {""courseCode"": ""IT102"", ""courseName"": ""Database Management"", ""grade"": ""A-""}]",8.7,"Coding Club, Soccer",false

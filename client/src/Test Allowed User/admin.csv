@@ -1,0 +1,3 @@
+adminId,name,email,department,phoneNumber,dateOfBirth,isRegistered
+Ad201,Anil Kumar,anil.kumar@example.com,Administration,1234567890,1975-04-22,true
+Ad202,Kumudini Devi,kumudini.devi@example.com,Finance,0987654321,1980-09-15,false

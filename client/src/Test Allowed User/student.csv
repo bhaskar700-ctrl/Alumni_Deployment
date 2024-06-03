@@ -1,0 +1,3 @@
+name,studentId,email,department,enrollmentYear,graduationYear,phoneNumber,address,dateOfBirth,nationality,gender,program,status,courses,gpa,isRegistered,signupToken,tokenExpiration
+Alice Bora,S101,alice.bora@example.com,Computer Science,2020,2024,1234567890,123 Main St,2002-03-15,India,female,B.Tech,active,"[{""courseCode"":""CS101"",""courseName"":""Intro to CS"",""semester"":""Fall 2020"",""grade"":""A""}]",8.5,true,,2024-06-01
+Bob Deka,S102,bob.deka@example.com,Electrical Engineering,2019,2023,0987654321,456 Elm St,2001-07-20,India,male,B.Tech,graduated,"[{""courseCode"":""EE201"",""courseName"":""Circuit Analysis"",""semester"":""Spring 2019"",""grade"":""B+""}]",7.8,false,,2023-06-01
