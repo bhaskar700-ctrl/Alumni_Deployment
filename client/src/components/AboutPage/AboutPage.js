@@ -30,7 +30,7 @@ const AboutUs = () => {
                             <p className="font-medium text-xl leading-5 text-gray-800  mt-4">Bhaskar Pathak</p>
                         </div>
                         <div className="p-4 pb-6 flex justify-center flex-col items-center">
-                            <img className="md:block hidden" src="anitmilijpeg" alt="Olivia featured Image" />
+                            <img className="md:block hidden" src="anitmili.jpeg" alt="Olivia featured Image" />
                             <img className="md:hidden block" src="anitmili.jpeg" alt="Olivia featured Image" />
                             <p className="font-medium text-xl leading-5 text-gray-800  mt-4">Anit Mili</p>
                         </div>
