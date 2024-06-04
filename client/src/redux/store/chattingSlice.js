@@ -40,29 +40,20 @@ export const fetchConversations = createAsyncThunk(
 );
 
 export const sendMessage = createAsyncThunk(
-    'chatting/sendMessage',
-    async ({ receiverId, content, file }, { getState, rejectWithValue }) => {
-        try {
-            const { auth: { token } } = getState();
-            if (token) {
-                axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-            }
-            const formData = new FormData();
-            formData.append('receiverId', receiverId);
-            if (content) formData.append('content', content);
-            if (file) formData.append('file', file);
-  
-            const response = await axiosInstance.post('/send', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            });
-            console.log('Response from sendMessage:', response.data.data); // Log the response
-            return response.data.data; // Return the message data including the sender
-        } catch (error) {
-            return rejectWithValue(error.response.data);
-        }
-    }
+  'chatting/sendMessage',
+  async ({ receiverId, content }, { getState, rejectWithValue }) => {
+      try {
+          const { auth: { token } } = getState();
+          if (token) {
+              axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+          }
+          const response = await axiosInstance.post('/send', { receiverId, content });
+          console.log('Response from sendMessage:', response.data.data); // Log the response
+          return response.data.data; // Return the message data including the sender
+      } catch (error) {
+          return rejectWithValue(error.response.data);
+      }
+  }
 );
 
 export const fetchConversationsList = createAsyncThunk(
@@ -113,6 +104,7 @@ export const editMessage = createAsyncThunk(
   }
 );
 
+
 export const deleteMessage = createAsyncThunk(
   'chatting/deleteMessage',
   async (messageId, { getState, rejectWithValue }) => {
@@ -128,6 +120,7 @@ export const deleteMessage = createAsyncThunk(
       }
   }
 );
+
 
 export const listChattedUsers = createAsyncThunk(
     'chatting/listChattedUsers',

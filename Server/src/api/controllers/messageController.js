@@ -10,65 +10,55 @@ class MessageController {
 
     async sendMessage(req, res) {
         try {
-          const senderId = req.user._id;
-          const { receiverId, content, groupId } = req.body;
-          let mediaUrl = null;
-      
-          if (req.file) {
-            if (req.file.mimetype.startsWith('image/')) {
-              mediaUrl = `/uploads/images/${req.file.filename}`;
-            } else if (req.file.mimetype.startsWith('video/')) {
-              mediaUrl = `/uploads/videos/${req.file.filename}`;
+            const senderId = req.user._id;
+            const { receiverId, content, mediaUrl, groupId } = req.body;
+
+            let newMessage;
+
+            if (groupId) {
+                const group = await Group.findById(groupId);
+                if (!group) {
+                    return res.status(404).json({ message: 'Group not found' });
+                }
+
+                newMessage = new Message({ sender: senderId, content, mediaUrl, groupId });
+                await newMessage.save();
+
+                console.log('New group message:', newMessage);
+
+                // Emit the message to all group members
+                group.members.forEach(memberId => {
+                    this.io.to(memberId.toString()).emit('message:newMessage', newMessage);
+                });
             } else {
-              mediaUrl = `/uploads/documents/${req.file.filename}`;
+                const receiver = await User.findById(receiverId);
+                if (!receiver) {
+                    return res.status(404).json({ message: 'Receiver not found' });
+                }
+
+                newMessage = new Message({ sender: senderId, receiver: receiverId, content, mediaUrl });
+                await newMessage.save();
+
+                console.log('New direct message:', newMessage);
+
+                // Emit the message to both the sender and receiver using their user IDs as room names
+                this.io.to(senderId.toString()).emit('message:newMessage', newMessage);
+                this.io.to(receiverId.toString()).emit('message:newMessage', newMessage);
+
+                NotificationController.createNotification(
+                    receiverId,
+                    'New Message',
+                    `You have a new message from ${req.user.name}`,
+                    `/messages/${newMessage._id}`
+                );
             }
-          }
-      
-          let newMessage;
-      
-          if (groupId) {
-            const group = await Group.findById(groupId);
-            if (!group) {
-              return res.status(404).json({ message: 'Group not found' });
-            }
-      
-            newMessage = new Message({ sender: senderId, content, mediaUrl, groupId });
-            await newMessage.save();
-      
-            console.log('New group message:', newMessage);
-      
-            // Emit the message to all group members
-            group.members.forEach(memberId => {
-              this.io.to(memberId.toString()).emit('message:newMessage', newMessage);
-            });
-          } else {
-            const receiver = await User.findById(receiverId);
-            if (!receiver) {
-              return res.status(404).json({ message: 'Receiver not found' });
-            }
-      
-            newMessage = new Message({ sender: senderId, receiver: receiverId, content, mediaUrl });
-            await newMessage.save();
-      
-            console.log('New direct message:', newMessage);
-      
-            // Emit the message to both the sender and receiver using their user IDs as room names
-            this.io.to(senderId.toString()).emit('message:newMessage', newMessage);
-            this.io.to(receiverId.toString()).emit('message:newMessage', newMessage);
-      
-            NotificationController.createNotification(
-              receiverId,
-              'New Message',
-              `You have a new message from ${req.user.name}`,
-              `/messages/${newMessage._id}`
-            );
-          }
-      
-          res.status(201).json({ message: 'Message sent', data: newMessage });
+
+            res.status(201).json({ message: 'Message sent', data: newMessage });
         } catch (error) {
-          res.status(500).json({ message: 'Error sending message: ' + error.message });
+            res.status(500).json({ message: 'Error sending message: ' + error.message });
         }
     }
+
     async getAllUsers(req, res) {
         const userId = req.user._id;
 
