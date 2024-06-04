@@ -27,15 +27,18 @@ const Navbar = () => {
             <div className="hidden md:flex items-center space-x-1">
               <a
                 href="#"
-                className="py-4 px-2 text-yellow-500  border-b-4 border-yellow-500 font-semibold"
+                className="py-4 px-2 text-yellow-500 border-b-4 border-yellow-500 font-semibold"
               >
                 Home
               </a>
-              <Link to="/about-us" className="py-4 px-2  text-gray-300 font-semibold hover:text-yellow-500 transition duration-300"
+              <Link
+                to="/about-us"
+                className="py-4 px-2 text-gray-300 font-semibold hover:text-yellow-500 transition duration-300"
               >
                 About
               </Link>
-              <Link to="/contact-us"
+              <Link
+                to="/contact-us"
                 className="py-4 px-2 text-gray-300 font-semibold hover:text-yellow-500 transition duration-300"
               >
                 Contact Us
@@ -83,35 +86,47 @@ const Navbar = () => {
           <li>
             <a
               href="#"
-              className="block text-sm px-2 py-4 text-gray-700 hover:bg-yellow-500 transition duration-300"
+              className="block text-sm px-2 py-4 text-white hover:bg-yellow-500 transition duration-300"
             >
               Home
             </a>
           </li>
           <li>
-            <a
-              href="#"
-              className="block text-sm px-2 py-4 text-gray-700 hover:bg-yellow-500 transition duration-300"
-            >
-              Services
-            </a>
-          </li>
-          <li>
             <Link
               to="/about-us"
-              className="block text-sm px-2 py-4 text-gray-700 hover:bg-yellow-500 transition duration-300"
+              className="block text-sm px-2 py-4 text-white hover:bg-yellow-500 transition duration-300"
             >
               About
             </Link>
           </li>
           <li>
-            <a
-              href="#"
-              className="block text-sm px-2 py-4 text-gray-700 hover:bg-yellow-500 transition duration-300"
+            <Link
+              to="/contact-us"
+              className="block text-sm px-2 py-4 text-white hover:bg-yellow-500 transition duration-300"
             >
               Contact Us
-            </a>
+            </Link>
           </li>
+          {!isAuthenticated && ( // Only render if not authenticated
+            <>
+              <li>
+                <Link
+                  to="/login"
+                  className="block text-sm px-2 py-4 text-white hover:bg-yellow-500 transition duration-300"
+                >
+                  Log In
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/register"
+                  className="block text-sm px-2 py-4 text-white hover:bg-yellow-500 transition duration-300"
+                >
+                  Sign Up
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </nav>
