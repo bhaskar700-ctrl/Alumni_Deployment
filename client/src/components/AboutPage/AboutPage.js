@@ -25,18 +25,18 @@ const AboutUs = () => {
                 <div className="w-full lg:w-8/12 lg:pt-8">
                     <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 lg:gap-4 shadow-lg rounded-md">
                         <div className="p-4 pb-6 flex justify-center flex-col items-center">
-                            <img className="md:block hidden" src="https://i.ibb.co/FYTKDG6/Rectangle-118-2.png" alt="Alexa featured Image" />
-                            <img className="md:hidden block" src="https://i.ibb.co/zHjXqg4/Rectangle-118.png" alt="Alexa featured Image" />
+                            <img className="md:block hidden" src="Pathak.jpg" alt="Alexa featured Image" />
+                            <img className="md:hidden block" src="Pathak.jpg" alt="Alexa featured Image" />
                             <p className="font-medium text-xl leading-5 text-gray-800  mt-4">Bhaskar Pathak</p>
                         </div>
                         <div className="p-4 pb-6 flex justify-center flex-col items-center">
-                            <img className="md:block hidden" src="https://i.ibb.co/fGmxhVy/Rectangle-119.png" alt="Olivia featured Image" />
-                            <img className="md:hidden block" src="https://i.ibb.co/NrWKJ1M/Rectangle-119.png" alt="Olivia featured Image" />
+                            <img className="md:block hidden" src="anitmilijpeg" alt="Olivia featured Image" />
+                            <img className="md:hidden block" src="anitmili.jpeg" alt="Olivia featured Image" />
                             <p className="font-medium text-xl leading-5 text-gray-800  mt-4">Anit Mili</p>
                         </div>
                         <div className="p-4 pb-6 flex justify-center flex-col items-center">
-                            <img className="md:block hidden" src="https://i.ibb.co/Pc6XVVC/Rectangle-120.png" alt="Liam featued Image" />
-                            <img className="md:hidden block" src="https://i.ibb.co/C5MMBcs/Rectangle-120.png" alt="Liam featued Image" />
+                            <img className="md:block hidden" src="csb20063.jpeg" alt="Liam featued Image" />
+                            <img className="md:hidden block" src="csb20063.jpeg" alt="Liam featued Image" />
                             <p className="font-medium text-xl leading-5 text-gray-800  mt-4">Bhaskar Sonowal</p>
                         </div>
                     </div>
